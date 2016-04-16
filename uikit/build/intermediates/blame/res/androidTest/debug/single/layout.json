@@ -392,12 +392,12 @@
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_pick_image_activity.xml"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_action_bar_right_picker_preview.xml",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_action_bar_right_picker_preview.xml"
-    },
-    {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_action_bar_right_picker_preview.xml",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_action_bar_right_picker_preview.xml"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_message_fragment.xml",

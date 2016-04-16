@@ -1,6 +1,7 @@
 package com.gxut.edu.imsharemusic.view;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,8 +32,19 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+        TextView textView = (TextView) rootView.findViewById(R.id.textview);
+        switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+            case 1:
+                textView.setBackgroundColor(Color.BLACK);
+                break;
+            case 3:
+                textView.setBackgroundColor(Color.RED);
+                break;
+            default:
+                break;
+        }
+
         return rootView;
     }
+
 }

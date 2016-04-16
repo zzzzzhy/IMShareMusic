@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.gxut.edu.imsharemusic.R;
 import com.gxut.edu.imsharemusic.adapter.SectionsPagerAdapter;
+import com.gxut.edu.imsharemusic.view.DepthPageTransformer;
 
 public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setPageTransformer(true,new DepthPageTransformer());
         mViewPager.setCurrentItem(1);
     }
 
