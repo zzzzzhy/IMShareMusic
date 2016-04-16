@@ -1,6 +1,7 @@
 package com.gxut.edu.imsharemusic.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,12 +9,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.gxut.edu.imsharemusic.R;
-import com.gxut.edu.imsharemusic.adapter.SectionsPagerAdapter;
-import com.gxut.edu.imsharemusic.view.DepthPageTransformer;
+import com.gxut.edu.imsharemusic.adapter.MainSectionsPagerAdapter;
+import com.gxut.edu.imsharemusic.view.ChatRoomFragment;
+import com.gxut.edu.imsharemusic.view.PlaceholderFragment;
+import com.gxut.edu.imsharemusic.view.UserInfoFragment;
+import com.gxut.edu.imsharemusic.view.ZoomOutPageTransformer;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private MainSectionsPagerAdapter mMainSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private ArrayList<Fragment> fragmentss = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +28,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        Fragment chatRoomFragment = new ChatRoomFragment();
+        Fragment placeholderFragment = PlaceholderFragment.newInstance(2);
+        Fragment userInfoFragment = new UserInfoFragment();
+        fragmentss.add(chatRoomFragment);
+        fragmentss.add(placeholderFragment);
+        fragmentss.add(userInfoFragment);
+        mMainSectionsPagerAdapter = new MainSectionsPagerAdapter(getSupportFragmentManager(), fragmentss);
         mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setPageTransformer(true,new DepthPageTransformer());
+        mViewPager.setAdapter(mMainSectionsPagerAdapter);
+        mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mViewPager.setCurrentItem(1);
     }
 

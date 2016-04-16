@@ -1,4 +1,4 @@
-package layout;
+package com.gxut.edu.imsharemusic.view;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.gxut.edu.imsharemusic.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CharRoomFragment extends Fragment {
+public class UserInfoFragment extends Fragment {
 
 
-    public CharRoomFragment() {
+    public UserInfoFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class CharRoomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.char_room_fragment, container, false);
+        return inflater.inflate(R.layout.user_info_fragment, container, false);
     }
 
 }
