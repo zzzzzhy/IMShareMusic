@@ -10,6 +10,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="50sp"
-        android:background="@color/colorAccent"/>
+        android:background="@color/black"/>
 
 </RelativeLayout>

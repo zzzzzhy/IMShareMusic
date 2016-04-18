@@ -2,7 +2,7 @@
     <string name="app_name">IMShareMusic</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="nim_status_unlogin">未登录</string>
+    <string name="net_broken">当前网络不可用</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

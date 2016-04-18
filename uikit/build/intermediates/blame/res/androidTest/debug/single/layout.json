@@ -40,16 +40,16 @@
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_menu_dialog.xml",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_menu_dialog.xml"
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_message_item_unknown.xml",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_message_item_unknown.xml"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_preview_image_layout_multi_touch.xml",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_preview_image_layout_multi_touch.xml"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_message_item_unknown.xml",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_message_item_unknown.xml"
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_menu_dialog.xml",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_menu_dialog.xml"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_contacts_item.xml",

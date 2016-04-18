@@ -40,20 +40,20 @@
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_ic_clear_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_image_default.png",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_image_default.png"
-    },
-    {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_scrollbar_handle_holo_dark.9.png",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_scrollbar_handle_holo_dark.9.png"
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_image_default.png",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_image_default.png"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_team_create_btn_pressed.9.png",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_team_create_btn_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_scrollbar_handle_holo_dark.9.png",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_scrollbar_handle_holo_dark.9.png"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_message_input_keyboard_pressed.png",
@@ -84,12 +84,12 @@
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_audio_animation_list_right_2.png",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_audio_animation_list_right_2.png"
+    },
+    {
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-hdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_message_input_voice_pressed.png",
@@ -100,12 +100,12 @@
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_message_plus_location_normal.png"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_cameras_hover.png",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_cameras_hover.png"
-    },
-    {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_picker_preview_normal.png",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_picker_preview_normal.png"
+    },
+    {
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_cameras_hover.png",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\drawable-hdpi\\nim_cameras_hover.png"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_loading_small_white.png",
