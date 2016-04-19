@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.chatroom.constant.ChatRoomTab;
-import com.netease.nim.demo.chatroom.fragment.ChatRoomMessageFragment;
+import com.gxut.edu.imsharemusic.R;
+import com.gxut.edu.imsharemusic.constant.ChatRoomTab;
+
 
 /**
  * 直播互动基类fragment

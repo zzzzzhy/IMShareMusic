@@ -2,7 +2,6 @@ package com.gxut.edu.imsharemusic.constant;
 
 import com.gxut.edu.imsharemusic.R;
 import com.gxut.edu.imsharemusic.view.tab.ChatRoomTabFragment;
-import com.gxut.edu.imsharemusic.view.tab.MasterTabFragment;
 import com.gxut.edu.imsharemusic.view.tab.MessageTabFragment;
 import com.gxut.edu.imsharemusic.view.tab.OnlinePeopleTabFragment;
 
@@ -11,7 +10,7 @@ import com.gxut.edu.imsharemusic.view.tab.OnlinePeopleTabFragment;
  */
 public enum ChatRoomTab {
     CHAT_ROOM_MESSAGE(0, MessageTabFragment.class, R.string.chat_room_message, R.layout.chat_room_message_tab),
-    MASTER(1, MasterTabFragment.class, R.string.chat_room_master, R.layout.chat_room_master_tab),
+   // MASTER(1, MasterTabFragment.class, R.string.chat_room_master, R.layout.chat_room_master_tab),
     ONLINE_PEOPLE(2, OnlinePeopleTabFragment.class, R.string.chat_room_online_people, R.layout.chat_room_people_tab);
 
     public final int tabIndex;

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/online_people_tab"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+<LinearLayout android:id="@+id/online_people_tab"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <fragment
         android:id="@+id/online_people_fragment"
-        android:name="com.netease.nim.demo.chatroom.fragment.OnlinePeopleFragment"
+        android:name="com.gxut.edu.imsharemusic.view.OnlinePeopleFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/online_people_fragment"/>
 </LinearLayout>

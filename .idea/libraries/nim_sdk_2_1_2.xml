@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="nim-sdk-2.1.2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/nim-sdk-2.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/uikit/libs/nim-sdk-2.1.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

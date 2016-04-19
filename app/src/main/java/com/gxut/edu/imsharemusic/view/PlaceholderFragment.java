@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gxut.edu.imsharemusic.R;
+import com.netease.nimlib.sdk.AbortableFuture;
+import com.netease.nimlib.sdk.auth.LoginInfo;
 
 /**
  * 主界面
@@ -16,6 +18,7 @@ import com.gxut.edu.imsharemusic.R;
  */
 public class PlaceholderFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private AbortableFuture<LoginInfo> loginRequest;
 
     public PlaceholderFragment() {
     }
@@ -34,7 +37,11 @@ public class PlaceholderFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.messages_main_fragment, container, false);
         TextView textView = (TextView) rootView.findViewById(R.id.textview);
         textView.setText(getArguments().getInt(ARG_SECTION_NUMBER) + "");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         return rootView;
     }
-
 }

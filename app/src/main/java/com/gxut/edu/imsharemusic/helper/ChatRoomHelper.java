@@ -1,6 +1,6 @@
 package com.gxut.edu.imsharemusic.helper;
 
-import com.netease.nim.demo.R;
+import com.gxut.edu.imsharemusic.R;
 import com.netease.nim.uikit.common.ui.imageview.ImageViewEx;
 
 import java.util.HashMap;

@@ -1,5 +1,7 @@
 package com.gxut.edu.imsharemusic.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -21,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private ArrayList<Fragment> fragmentss = new ArrayList<>();
 
+    public static void start(Context context) {
+        start(context, null);
+    }
+    public static void start(Context context, Intent extras) {
+        Intent intent = new Intent();
+        intent.setClass(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        if (extras != null) {
+            intent.putExtras(extras);
+        }
+        context.startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mMainSectionsPagerAdapter);
         mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mViewPager.setCurrentItem(1);
+
+
     }
+
 
 
     @Override

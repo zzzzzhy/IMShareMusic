@@ -2,7 +2,7 @@ package com.gxut.edu.imsharemusic.view.viewholder;
 
 import android.widget.TextView;
 
-import com.netease.nim.demo.chatroom.helper.ChatRoomNotificationHelper;
+import com.gxut.edu.imsharemusic.helper.ChatRoomNotificationHelper;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderBase;
 import com.netease.nimlib.sdk.chatroom.model.ChatRoomNotificationAttachment;
 

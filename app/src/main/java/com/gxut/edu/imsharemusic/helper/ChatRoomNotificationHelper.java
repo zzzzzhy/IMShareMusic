@@ -2,7 +2,7 @@ package com.gxut.edu.imsharemusic.helper;
 
 import android.text.TextUtils;
 
-import com.netease.nim.demo.DemoCache;
+import com.gxut.edu.imsharemusic.DemoCache;
 import com.netease.nimlib.sdk.chatroom.model.ChatRoomNotificationAttachment;
 
 import java.util.List;
