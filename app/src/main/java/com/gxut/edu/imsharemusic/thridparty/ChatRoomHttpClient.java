@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.gxut.edu.imsharemusic.DemoCache;
+import com.gxut.edu.imsharemusic.config.DemoServers;
 import com.gxut.edu.imsharemusic.helper.ExtensionHelper;
 import com.gxut.edu.imsharemusic.util.common.NimHttpClient;
 import com.netease.nim.uikit.common.util.log.LogUtil;
@@ -72,8 +73,8 @@ public class ChatRoomHttpClient {
      * 向网易云信Demo应用服务器请求聊天室列表
      */
     public void fetchChatRoomList(final ChatRoomHttpCallback<List<ChatRoomInfo>> callback) {
-       // String url = DemoServers.chatRoomAPIServer() + API_NAME_CHAT_ROOM_LIST;
-        String url = "https://apptest.netease.im/api/chatroom/";
+        String url = DemoServers.chatRoomAPIServer() + API_NAME_CHAT_ROOM_LIST;
+        //String url = "https://apptest.netease.im/api/chatroom/";
         Map<String, String> headers = new HashMap<>(1);
         String appKey = readAppKey();
         headers.put(HEADER_KEY_APP_KEY, appKey);

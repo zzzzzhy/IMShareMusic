@@ -20,7 +20,7 @@ public class MainSectionsPagerAdapter extends FragmentPagerAdapter implements Vi
 
     @Override
     public Fragment getItem(int position) {
-        // return PlaceholderFragment.newInstance(position + 1);
+        // return ChatRoomMessageFragment.newInstance(position + 1);
         return fragments.get(position);
     }
 

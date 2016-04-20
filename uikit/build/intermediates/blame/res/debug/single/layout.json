@@ -104,12 +104,12 @@
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\layout\\nim_recent_contacts.xml"
     },
     {
-        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\layout\\nim_message_item_picture.xml",
-        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\layout\\nim_message_item_picture.xml"
-    },
-    {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\layout\\nim_message_item_audio.xml",
         "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\layout\\nim_message_item_audio.xml"
+    },
+    {
+        "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\layout\\nim_message_item_picture.xml",
+        "source": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\res\\layout\\nim_message_item_picture.xml"
     },
     {
         "merged": "C:\\Users\\Taste\\AndroidStudioProjects\\IMShareMusic\\uikit\\build\\intermediates\\res\\merged\\debug\\layout\\nim_message_activity_bottom_layout.xml",

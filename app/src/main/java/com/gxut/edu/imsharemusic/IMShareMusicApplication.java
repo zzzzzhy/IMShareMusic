@@ -7,7 +7,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.text.TextUtils;
 
+import com.gxut.edu.imsharemusic.activity.WelcomeActivity;
 import com.gxut.edu.imsharemusic.config.ExtraOptions;
+import com.gxut.edu.imsharemusic.config.preference.Preferences;
 import com.gxut.edu.imsharemusic.config.preference.UserPreferences;
 import com.gxut.edu.imsharemusic.util.sys.SystemUtil;
 import com.netease.nim.uikit.ImageLoaderKit;
@@ -36,11 +38,11 @@ public class IMShareMusicApplication extends Application {
         super.onCreate();
         DemoCache.setContext(this);
         // SDK初始化（启动后台服务，若已经存在用户登录信息， SDK 将完成自动登录）
-        NIMClient.init(this, loginInfo(), options());
+        NIMClient.init(this, getLoginInfo(), options());
         ExtraOptions.provide();
         if (inMainProcess()) {
-            // init pinyin
-            //PinYin.init(this);
+            //  init pinyin
+            // PinYin.init(this);
             //PinYin.validate();
 
             // 初始化UIKit模块
@@ -57,7 +59,7 @@ public class IMShareMusicApplication extends Application {
 
         // 如果将新消息通知提醒托管给 SDK 完成，需要添加以下配置。否则无需设置。
         StatusBarNotificationConfig config = new StatusBarNotificationConfig();
-        //config.notificationEntrance = WelcomeActivity.class; // 点击通知栏跳转到该Activity
+        config.notificationEntrance = WelcomeActivity.class; // 点击通知栏跳转到该Activity
         config.notificationSmallIconId = R.drawable.ic_stat_notify_msg;
         options.statusBarNotificationConfig = config;
 
@@ -84,7 +86,7 @@ public class IMShareMusicApplication extends Application {
 
             @Override
             public int getDefaultIconResId() {
-                return R.drawable.avatar_def;
+                return R.drawable.head_icon;
             }
 
             @Override
@@ -106,16 +108,13 @@ public class IMShareMusicApplication extends Application {
         return options;
     }
 
-    // 如果已经存在用户登录信息，返回LoginInfo，否则返回null即可
-    private LoginInfo loginInfo() {
-        return null;
-    }
 
     public boolean inMainProcess() {
         String packageName = getPackageName();
         String processName = SystemUtil.getProcessName(this);
         return packageName.equals(processName);
     }
+
     private UserInfoProvider infoProvider = new UserInfoProvider() {
         @Override
         public UserInfo getUserInfo(String account) {
@@ -129,7 +128,7 @@ public class IMShareMusicApplication extends Application {
 
         @Override
         public int getDefaultIconResId() {
-            return R.drawable.avatar_def;
+            return R.drawable.head_icon;
         }
 
         @Override
@@ -194,4 +193,16 @@ public class IMShareMusicApplication extends Application {
         }
     };
 
+    private LoginInfo getLoginInfo() {
+        // 从本地读取上次登录成功时保存的用户登录信息
+        String account = Preferences.getUserAccount();
+        String token = Preferences.getUserToken();
+
+        if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(token)) {
+            DemoCache.setAccount(account.toLowerCase());
+            return new LoginInfo(account, token);
+        } else {
+            return null;
+        }
+    }
 }

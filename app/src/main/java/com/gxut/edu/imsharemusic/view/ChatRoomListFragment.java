@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.gxut.edu.imsharemusic.R;
-import com.gxut.edu.imsharemusic.activity.ChatRoomActivity;
 import com.gxut.edu.imsharemusic.adapter.ChatRoom_NameAdapter;
 import com.gxut.edu.imsharemusic.entity.ChatRoom_entity;
 
@@ -50,7 +49,7 @@ public class ChatRoomListFragment extends Fragment {
         view1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ChatRoomActivity.start(getContext(), "3001");
+                //ChatRoomActivity.start(getContext(), "3001");
             }
         });
 

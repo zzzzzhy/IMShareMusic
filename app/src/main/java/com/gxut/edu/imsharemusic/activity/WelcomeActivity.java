@@ -156,7 +156,7 @@ public class WelcomeActivity extends TActivity {
      * 首次进入，打开欢迎界面
      */
     private void showSplashView() {
-        getWindow().setBackgroundDrawableResource(R.drawable.welcome_bg);
+        getWindow().setBackgroundDrawableResource(R.drawable.wallpaper);
         customSplash = true;
     }
 
@@ -165,7 +165,7 @@ public class WelcomeActivity extends TActivity {
     }
 
     private void showMainActivity(Intent intent) {
-        MainActivity.start(WelcomeActivity.this, intent);
+        MainActivity.start(WelcomeActivity.this, intent,"3001");
         finish();
     }
 }

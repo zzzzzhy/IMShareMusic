@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.gxut.edu.imsharemusic.DemoCache;
 import com.gxut.edu.imsharemusic.R;
-import com.gxut.edu.imsharemusic.activity.ChatRoomActivity;
+import com.gxut.edu.imsharemusic.activity.MainActivity;
 import com.gxut.edu.imsharemusic.helper.ChatRoomMemberCache;
 import com.gxut.edu.imsharemusic.view.viewholder.OnlinePeopleViewHolder;
 import com.netease.nim.uikit.cache.SimpleCallback;
@@ -73,7 +73,7 @@ public class OnlinePeopleFragment extends TFragment implements TAdapterDelegate 
 
     public void onCurrent() {
         clearCache();
-        roomId = ((ChatRoomActivity) getActivity()).getRoomInfo().getRoomId();
+        roomId = ((MainActivity) getActivity()).getRoomInfo().getRoomId();
         fetchData();
     }
 

@@ -296,6 +296,7 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
                 switchToTextLayout(true);// 显示文本发送的布局
             } else if (v == sendMessageButtonInInputBar) {
                 onTextMessageSendButtonPressed();
+                Log.i("TAG", "-------------------------运行!!!!!!!!!!");
             } else if (v == switchToAudioButtonInInputBar) {
                 switchToAudioLayout();
             } else if (v == moreFuntionButtonInInputBar) {
@@ -303,6 +304,7 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
             } else if (v == emojiButtonInInputBar) {
                 toggleEmojiLayout();
             }
+            Log.i("TAG","-------------------------运行!!!!!!!!!!");
         }
     };
 

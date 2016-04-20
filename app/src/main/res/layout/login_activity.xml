@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/login_bg"
+              android:background="@drawable/wallpaper"
               android:orientation="vertical">
 
     <ScrollView
@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="59dp"
-                android:background="@drawable/logo"
+                android:background="@drawable/background_tab"
                 android:contentDescription="@string/empty"/>
 
             <FrameLayout
@@ -123,14 +123,27 @@
             </FrameLayout>
 
             <TextView
-                android:id="@+id/register_login_tip"
-                android:layout_width="wrap_content"
+                android:id="@+id/login_tip"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dip"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="15dip"
+                android:text="@string/login"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/register_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:padding="15dip"
                 android:text="@string/register"
-                android:textSize="15sp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

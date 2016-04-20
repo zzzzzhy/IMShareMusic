@@ -11,7 +11,6 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +26,6 @@ import com.netease.nim.uikit.common.ui.dialog.EasyAlertDialogHelper;
 import com.netease.nim.uikit.common.ui.widget.ClearableEditTextWithIcon;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.common.util.string.MD5;
-import com.netease.nim.uikit.common.util.sys.ActionBarUtil;
-import com.netease.nim.uikit.common.util.sys.ScreenUtil;
 import com.netease.nimlib.sdk.AbortableFuture;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
@@ -46,15 +43,15 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final String KICK_OUT = "KICK_OUT";
 
-    private TextView rightTopBtn;  // ActionBar完成按钮
-    private TextView switchModeBtn;  // 注册/登录切换按钮
+    private TextView registerTextview;  // ActionBar完成按钮
+    private TextView loginTextview;  // 注册/登录切换按钮
 
     private ClearableEditTextWithIcon loginAccountEdit;
     private ClearableEditTextWithIcon loginPasswordEdit;
 
-    private ClearableEditTextWithIcon registerAccountEdit;
-    private ClearableEditTextWithIcon registerNickNameEdit;
-    private ClearableEditTextWithIcon registerPasswordEdit;
+//    private ClearableEditTextWithIcon registerAccountEdit;
+//    private ClearableEditTextWithIcon registerNickNameEdit;
+//    private ClearableEditTextWithIcon registerPasswordEdit;
 
     private View loginLayout;
     private View registerLayout;
@@ -114,23 +111,6 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
         }
     }
 
-    /**
-     * ActionBar 右上角按钮
-     */
-    private void initRightTopBtn() {
-        rightTopBtn = addRegisterRightTopBtn(this, R.string.login);
-        rightTopBtn.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (registerMode) {
-                   // register();
-                } else {
-                    login();
-                }
-            }
-        });
-    }
 
     /**
      * 登录面板
@@ -150,6 +130,14 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
 
         String account = Preferences.getUserAccount();
         loginAccountEdit.setText(account);
+        loginTextview = findView(R.id.login_tip);
+
+        loginTextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
     }
 
     /**
@@ -158,15 +146,7 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
     private void setupRegisterPanel() {
         loginLayout = findView(R.id.login_layout);
         registerLayout = findView(R.id.register_layout);
-        switchModeBtn = findView(R.id.register_login_tip);
-
-        switchModeBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //switchMode();
-                login();
-            }
-        });
+        registerTextview = findView(R.id.register_tip);
     }
 
     private TextWatcher textWatcher = new TextWatcher() {
@@ -188,18 +168,12 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
                 // 登录模式
                 boolean isEnable = loginAccountEdit.getText().length() > 0
                         && loginPasswordEdit.getText().length() > 0;
-                //updateRightTopBtn(LoginActivity.this, rightTopBtn, isEnable);
+                //updateRightTopBtn(LoginActivity.this, registerTextview, isEnable);
             }
         }
     };
 
-    private void updateRightTopBtn(Context context, TextView rightTopBtn, boolean isEnable) {
-        rightTopBtn.setText(R.string.done);
-        rightTopBtn.setBackgroundResource(R.drawable.g_white_btn_selector);
-        rightTopBtn.setEnabled(isEnable);
-        rightTopBtn.setTextColor(context.getResources().getColor(R.color.color_blue_0888ff));
-        rightTopBtn.setPadding(ScreenUtil.dip2px(10), 0, ScreenUtil.dip2px(10), 0);
-    }
+
 
     /**
      * ***************************************** 登录 **************************************
@@ -217,9 +191,6 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
         }).setCanceledOnTouchOutside(false);
 
         // 云信只提供消息通道，并不包含用户资料逻辑。开发者需要在管理后台或通过服务器接口将用户帐号和token同步到云信服务器。
-        // 在这里直接使用同步到云信服务器的帐号和token登录。
-        // 这里为了简便起见，demo就直接使用了密码的md5作为token。
-        // 如果开发者直接使用这个demo，只更改appkey，然后就登入自己的账户体系的话，需要传入同步到云信服务器的token，而不是用户密码。
         final String account = loginAccountEdit.getEditableText().toString().toLowerCase();
         final String token = tokenFromPassword(loginPasswordEdit.getEditableText().toString());
         // 登录
@@ -246,7 +217,7 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
                 DataCacheManager.buildDataCacheAsync();
 
                 // 进入主界面
-                MainActivity.start(LoginActivity.this, null);
+                MainActivity.start(LoginActivity.this, null, "3001");
                 finish();
             }
 
@@ -278,8 +249,6 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
         Preferences.saveUserToken(token);
     }
 
-    //DEMO中使用 username 作为 NIM 的account ，md5(password) 作为 token
-    //开发者需要根据自己的实际情况配置自身用户系统和 NIM 用户系统的关系
     private String tokenFromPassword(String password) {
         String appKey = readAppKey(this);
         boolean isDemo = "45c6af3c98409b18a84451215d0bdd6e".equals(appKey)
@@ -300,53 +269,4 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
         return null;
     }
 
-
-    /**
-     * ***************************************** 注册/登录切换 **************************************
-     */
-    private void switchMode() {
-        registerMode = !registerMode;
-
-        if (registerMode && !registerPanelInited) {
-            registerAccountEdit = findView(R.id.edit_register_account);
-            registerNickNameEdit = findView(R.id.edit_register_nickname);
-            registerPasswordEdit = findView(R.id.edit_register_password);
-
-            registerAccountEdit.setIconResource(R.drawable.user_account_icon);
-            registerNickNameEdit.setIconResource(R.drawable.nick_name_icon);
-            registerPasswordEdit.setIconResource(R.drawable.user_pwd_lock_icon);
-
-            registerAccountEdit.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
-            registerNickNameEdit.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
-            registerPasswordEdit.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
-
-            registerAccountEdit.addTextChangedListener(textWatcher);
-            registerNickNameEdit.addTextChangedListener(textWatcher);
-            registerPasswordEdit.addTextChangedListener(textWatcher);
-
-            registerPanelInited = true;
-        }
-
-        setTitle(registerMode ? R.string.register : R.string.login);
-        loginLayout.setVisibility(registerMode ? View.GONE : View.VISIBLE);
-        registerLayout.setVisibility(registerMode ? View.VISIBLE : View.GONE);
-        switchModeBtn.setText(registerMode ? R.string.login_has_account : R.string.register);
-        if (registerMode) {
-            rightTopBtn.setEnabled(true);
-        } else {
-            boolean isEnable = loginAccountEdit.getText().length() > 0
-                    && loginPasswordEdit.getText().length() > 0;
-            rightTopBtn.setEnabled(isEnable);
-        }
-    }
-
-    public static TextView addRegisterRightTopBtn(TActionBarActivity activity, int strResId) {
-        String text = activity.getResources().getString(strResId);
-        TextView textView = ActionBarUtil.addRightClickableTextViewOnActionBar(activity, text);
-        if (textView != null) {
-            textView.setBackgroundResource(R.drawable.register_right_top_btn_selector);
-            textView.setPadding(ScreenUtil.dip2px(10), 0, ScreenUtil.dip2px(10), 0);
-        }
-        return textView;
-    }
 }
