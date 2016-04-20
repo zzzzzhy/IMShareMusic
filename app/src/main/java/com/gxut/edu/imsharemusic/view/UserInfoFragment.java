@@ -3,13 +3,15 @@ package com.gxut.edu.imsharemusic.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gxut.edu.imsharemusic.R;
-import com.gxut.edu.imsharemusic.activity.MainActivity;
+import com.gxut.edu.imsharemusic.activity.LoginActivity;
 import com.gxut.edu.imsharemusic.config.preference.Preferences;
+import com.gxut.edu.imsharemusic.helper.LogoutHelper;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.auth.AuthService;
 
@@ -44,7 +46,10 @@ public class UserInfoFragment extends Fragment {
      */
     private void logout() {
         removeLoginState();
-        MainActivity.logout(getActivity(), false);
+        LogoutHelper.logout();
+        Log.i("TAG", "++++++++++++++++++++++++++++++onLogout运行!!!!!!!!!!");
+        // 启动登录
+        LoginActivity.start(getActivity());
         getActivity().finish();
         NIMClient.getService(AuthService.class).logout();
     }

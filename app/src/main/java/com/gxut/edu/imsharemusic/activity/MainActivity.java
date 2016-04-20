@@ -19,6 +19,7 @@ import com.gxut.edu.imsharemusic.view.ChatRoomMessageFragment;
 import com.gxut.edu.imsharemusic.view.ChatRoomTopFragment;
 import com.gxut.edu.imsharemusic.view.UserInfoFragment;
 import com.gxut.edu.imsharemusic.view.ZoomOutPageTransformer;
+import com.netease.nim.uikit.LoginSyncDataStatusObserver;
 import com.netease.nim.uikit.common.activity.TActivity;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
 import com.netease.nim.uikit.common.util.log.LogUtil;
@@ -63,14 +64,19 @@ public class MainActivity extends TActivity {
     private ChatRoomMessageFragment messageFragment;
     private AbortableFuture<EnterChatRoomResultData> enterRequest;
 
-    // 注销
-    public static void logout(Context context, boolean quit) {
-        Intent extra = new Intent();
-        extra.putExtra(EXTRA_APP_QUIT, quit);
-        start(context, extra, "3001");
+
+    public static void start(Context context, String roomId) {
+        start(context, null, roomId);
     }
-    public static void start(Context context) {
-        start(context, null, "3001");
+
+    public static void start(Context context, Intent extras) {
+        Intent intent = new Intent();
+        intent.setClass(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        if (extras != null) {
+            intent.putExtras(extras);
+        }
+        context.startActivity(intent);
     }
 
     public static void start(Context context, Intent extras, String roomId) {
@@ -97,6 +103,20 @@ public class MainActivity extends TActivity {
         mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mViewPager.setCurrentItem(1);
         roomId = getIntent().getStringExtra(EXTRA_ROOM_ID);
+
+
+        // 等待同步数据完成
+        boolean syncCompleted = LoginSyncDataStatusObserver.getInstance().observeSyncDataCompletedEvent(new Observer<Void>() {
+            @Override
+            public void onEvent(Void v) {
+                DialogMaker.dismissProgressDialog();
+            }
+        });
+
+        Log.i(TAG, "sync completed = " + syncCompleted);
+        if (!syncCompleted) {
+            DialogMaker.showProgressDialog(MainActivity.this, getString(R.string.prepare_data)).setCanceledOnTouchOutside(false);
+        }
         Log.i(TAG, "---------------------" + roomId);
         // 注册监听
         registerObservers(true);
@@ -115,6 +135,7 @@ public class MainActivity extends TActivity {
         fragmentss.add(chatRoomMessageFragment);
         fragmentss.add(userInfoFragment);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -151,7 +172,7 @@ public class MainActivity extends TActivity {
                 ChatRoomMember member = result.getMember();
                 member.setRoomId(roomInfo.getRoomId());
                 ChatRoomMemberCache.getInstance().saveMyMember(member);
-               // initChatRoomFragment();
+                // initChatRoomFragment();
                 initMessageFragment();
                 Toast.makeText(MainActivity.this, "欢迎进入聊天室", Toast.LENGTH_SHORT).show();
             }
@@ -242,15 +263,15 @@ public class MainActivity extends TActivity {
         messageFragment = (ChatRoomMessageFragment) chatRoomMessageFragment;
         if (messageFragment != null) {
             messageFragment.init(roomId);
-            Log.i("TAG", "-------------------------messageFragment运行!!!!!!!!!!");
+            //Log.i("TAG", "-------------------------messageFragment运行!!!!!!!!!!");
         } else {
-            Log.i("TAG", "-------------------------messageFragment没运行!!!!!!!!!!");
+            //Log.i("TAG", "-------------------------messageFragment没运行!!!!!!!!!!");
             // 如果Fragment还未Create完成，延迟初始化
             getHandler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     initMessageFragment();
-                    Log.i("TAG", "++++++++++++++++++++++++++++++messageFragment运行!!!!!!!!!!");
+                    // Log.i("TAG", "++++++++++++++++++++++++++++++messageFragment运行!!!!!!!!!!");
                 }
             }, 50);
         }
@@ -264,6 +285,8 @@ public class MainActivity extends TActivity {
     public ChatRoomInfo getRoomInfo() {
         return roomInfo;
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

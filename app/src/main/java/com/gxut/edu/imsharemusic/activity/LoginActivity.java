@@ -225,7 +225,7 @@ public class LoginActivity extends TActionBarActivity implements OnKeyListener {
             public void onFailed(int code) {
                 onLoginDone();
                 if (code == 302 || code == 404) {
-                    Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "账号密码错误!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LoginActivity.this, "登录失败: " + code, Toast.LENGTH_SHORT).show();
                 }
