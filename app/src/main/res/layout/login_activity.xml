@@ -18,8 +18,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="59dp"
-                android:background="@drawable/background_tab"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/im_chatroom_logo"
                 android:contentDescription="@string/empty"/>
 
             <FrameLayout
@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
-                android:layout_marginTop="74dp">
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
                     android:id="@+id/login_layout"
@@ -45,7 +45,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/color_white_66ffffff"
+                        android:textColorHint="@color/color_black_000000_88_transparent"
                         android:textCursorDrawable="@null"
                         android:textSize="15sp"/>
 
@@ -61,7 +61,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/color_white_66ffffff"
+                        android:textColorHint="@color/color_black_000000_88_transparent"
                         android:textCursorDrawable="@null"
                         android:textSize="15sp"/>
                 </LinearLayout>
@@ -85,7 +85,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/color_white_66ffffff"
+                        android:textColorHint="@color/color_black_000000_88_transparent"
                         android:textCursorDrawable="@null"
                         android:textSize="15sp"/>
 
@@ -100,7 +100,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/color_white_66ffffff"
+                        android:textColorHint="@color/color_black_000000_88_transparent"
                         android:textCursorDrawable="@null"
                         android:textSize="15sp"/>
 
@@ -116,7 +116,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/color_white_66ffffff"
+                        android:textColorHint="@color/color_black_000000_88_transparent"
                         android:textCursorDrawable="@null"
                         android:textSize="15sp"/>
                 </LinearLayout>

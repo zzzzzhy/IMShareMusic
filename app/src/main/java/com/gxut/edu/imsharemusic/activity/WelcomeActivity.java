@@ -9,7 +9,6 @@ import android.util.Log;
 import com.gxut.edu.imsharemusic.DemoCache;
 import com.gxut.edu.imsharemusic.R;
 import com.gxut.edu.imsharemusic.config.preference.Preferences;
-import com.gxut.edu.imsharemusic.module.Extras;
 import com.gxut.edu.imsharemusic.util.sys.SysInfoUtil;
 import com.netease.nim.uikit.common.activity.TActivity;
 import com.netease.nim.uikit.common.util.log.LogUtil;
@@ -20,13 +19,12 @@ import java.util.ArrayList;
 
 /**
  * 欢迎/导航页（app启动Activity）
- * <p/>
+ * <p>
  * Created by huangjun on 2015/2/1.
  */
 public class WelcomeActivity extends TActivity {
 
     private static final String TAG = "WelcomeActivity";
-
     private boolean customSplash = false;
 
     private static boolean firstEnter = true; // 是否首次进入
@@ -45,6 +43,7 @@ public class WelcomeActivity extends TActivity {
             showSplashView();
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -115,8 +114,6 @@ public class WelcomeActivity extends TActivity {
                 if (intent.hasExtra(NimIntent.EXTRA_NOTIFY_CONTENT)) {
                     parseNotifyIntent(intent);
                     return;
-                } else if (intent.hasExtra(Extras.EXTRA_JUMP_P2P)) {
-                    parseNormalIntent(intent);
                 }
             }
 
@@ -148,9 +145,6 @@ public class WelcomeActivity extends TActivity {
         }
     }
 
-    private void parseNormalIntent(Intent intent) {
-        showMainActivity(intent);
-    }
 
     /**
      * 首次进入，打开欢迎界面
@@ -165,7 +159,7 @@ public class WelcomeActivity extends TActivity {
     }
 
     private void showMainActivity(Intent intent) {
-        MainActivity.start(WelcomeActivity.this, intent,"3001");
+        MainActivity.start(WelcomeActivity.this, intent, "3001");
         finish();
     }
 }

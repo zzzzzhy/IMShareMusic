@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.gxut.edu.imsharemusic.R;
-import com.gxut.edu.imsharemusic.activity.MainActivity;
 import com.gxut.edu.imsharemusic.adapter.ChatRoom_NameAdapter;
 import com.gxut.edu.imsharemusic.entity.ChatRoom_entity;
 
@@ -32,19 +31,17 @@ public class ChatRoomListFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.chat_room_list_fragment, container, false);
-
         ArrayList<ChatRoom_entity> datas = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
             ChatRoom_entity name = new ChatRoom_entity("房间号：" + i);
             datas.add(name);
         }
-        ListView view1 = (ListView)view.findViewById(R.id.chat_room_fragment);
+        ListView view1 = (ListView) view.findViewById(R.id.chat_room_fragment);
         ChatRoom_NameAdapter nameAdapter = new ChatRoom_NameAdapter(getLayoutInflater(savedInstanceState), datas);
         view1.setAdapter(nameAdapter);
         view1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,33 +49,22 @@ public class ChatRoomListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        MainActivity.start(getActivity(),"3001");
                         break;
                     case 1:
-                        MainActivity.start(getActivity(),"3002");
                         break;
                     case 2:
-                        MainActivity.start(getActivity(),"3003");
                         break;
                     case 3:
-                        MainActivity.start(getActivity(),"3004");
                         break;
                     case 4:
-                        MainActivity.start(getActivity(),"3005");
                         break;
                     case 5:
-                        MainActivity.start(getActivity(),"3006");
                         break;
                     default:
                         break;
                 }
-
             }
         });
-
         return view;
-
     }
-
-
 }

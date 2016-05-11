@@ -4,10 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gxut.edu.imsharemusic.R;
 import com.gxut.edu.imsharemusic.entity.ChatRoom_entity;
+import com.gxut.edu.imsharemusic.helper.ChatRoomHelper;
 
 import java.util.ArrayList;
 
@@ -41,11 +43,16 @@ public class ChatRoom_NameAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView tv_charNmae;
+        ImageView imageView;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.chat_room_list_item, null);
         }
         tv_charNmae = (TextView) convertView.findViewById(R.id.char_room_name);
-        tv_charNmae.setText(datas.get(position).getCharRoom_name());
+        imageView = (ImageView) convertView.findViewById(R.id.chat_room_image);
+        if (position < 8) {
+            imageView.setImageResource(ChatRoomHelper.imageRes[position]);
+            tv_charNmae.setText(datas.get(position).getCharRoom_name());
+        }
         return convertView;
     }
 }

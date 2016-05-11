@@ -45,7 +45,6 @@ public class MainActivity extends TActivity {
     private ViewPager mViewPager;
     private ArrayList<Fragment> fragmentss = new ArrayList<>();
     private final static String EXTRA_ROOM_ID = "ROOM_ID";
-    private static final String EXTRA_APP_QUIT = "APP_QUIT";
     private static final String TAG = MainActivity.class.getSimpleName();
     private Fragment chatRoomFragment;
     private Fragment chatRoomMessageFragment;
@@ -57,6 +56,7 @@ public class MainActivity extends TActivity {
     private ChatRoomInfo roomInfo;
 
     private ChatRoomTopFragment fragment;
+    private Context context;
 
     /**
      * 子页面
@@ -69,15 +69,6 @@ public class MainActivity extends TActivity {
         start(context, null, roomId);
     }
 
-    public static void start(Context context, Intent extras) {
-        Intent intent = new Intent();
-        intent.setClass(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        if (extras != null) {
-            intent.putExtras(extras);
-        }
-        context.startActivity(intent);
-    }
 
     public static void start(Context context, Intent extras, String roomId) {
         Intent intent = new Intent();
@@ -104,7 +95,6 @@ public class MainActivity extends TActivity {
         mViewPager.setCurrentItem(1);
         roomId = getIntent().getStringExtra(EXTRA_ROOM_ID);
 
-
         // 等待同步数据完成
         boolean syncCompleted = LoginSyncDataStatusObserver.getInstance().observeSyncDataCompletedEvent(new Observer<Void>() {
             @Override
@@ -123,7 +113,7 @@ public class MainActivity extends TActivity {
 
         // 登录聊天室
         enterRoom();
-
+        context = this;
     }
 
     private void initView() {
@@ -184,6 +174,8 @@ public class MainActivity extends TActivity {
                     Toast.makeText(MainActivity.this, "你已被拉入黑名单，不能再进入", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "enter chat room failed, code=" + code, Toast.LENGTH_SHORT).show();
+                    LoginActivity.start(context);
+                    finish();
                 }
                 //finish();
             }
@@ -192,7 +184,7 @@ public class MainActivity extends TActivity {
             public void onException(Throwable exception) {
                 onLoginDone();
                 Toast.makeText(MainActivity.this, "enter chat room exception, e=" + exception.getMessage(), Toast.LENGTH_SHORT).show();
-                finish();
+
             }
         });
     }

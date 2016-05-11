@@ -1,21 +1,14 @@
 package com.gxut.edu.imsharemusic.helper;
 
 import com.gxut.edu.imsharemusic.R;
-import com.netease.nim.uikit.common.ui.imageview.ImageViewEx;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by hzxuwen on 2016/1/19.
  */
 public class ChatRoomHelper {
-    private static final int[] imageRes = {R.drawable.room_cover_36, R.drawable.room_cover_37, R.drawable.room_cover_49,
-            R.drawable.room_cover_50, R.drawable.room_cover_57, R.drawable.room_cover_58, R.drawable.room_cover_64,
-            R.drawable.room_cover_72};
-
-    private static Map<String, Integer> roomCoverMap = new HashMap<>();
-    private static int index = 0;
+    public static final int[] imageRes = {R.drawable.chatroom_head_1, R.drawable.chatroom_head_2, R.drawable.chatroom_head_3,
+            R.drawable.chatroom_head_4, R.drawable.chatroom_head_5, R.drawable.chatroom_head_6, R.drawable.chatroom_head_7,
+            R.drawable.imagechatroom, R.drawable.chatroom_head_8};
 
     public static void init() {
         ChatRoomMemberCache.getInstance().clear();
@@ -25,18 +18,5 @@ public class ChatRoomHelper {
     public static void logout() {
         ChatRoomMemberCache.getInstance().registerObservers(false);
         ChatRoomMemberCache.getInstance().clear();
-    }
-
-    public static void setCoverImage(String roomId, ImageViewEx coverImage) {
-        if (roomCoverMap.containsKey(roomId)) {
-            coverImage.setImageResource(roomCoverMap.get(roomId));
-        } else {
-            if (index > imageRes.length) {
-                index = 0;
-            }
-            roomCoverMap.put(roomId, imageRes[index]);
-            coverImage.setImageResource(imageRes[index]);
-            index++;
-        }
     }
 }

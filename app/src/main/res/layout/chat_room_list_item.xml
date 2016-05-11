@@ -4,21 +4,28 @@
               android:layout_height="match_parent"
               android:orientation="horizontal">
 
+    <ImageView
+        android:id="@+id/chat_room_image"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:layout_height="wrap_content"/>
+
     <TextView
+        android:id="@+id/char_room_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/char_room_name"
-        android:textSize="25sp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:layout_weight="1"/>
+        android:textSize="25sp"/>
 
     <Spinner
         android:layout_width="0dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:layout_weight="0.2">
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:spinnerMode="dropdown">
 
     </Spinner>
 </LinearLayout>

@@ -29,7 +29,7 @@
         android:layout_above="@id/messageActivityBottomLayout">
 
         <fragment
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:name="com.gxut.edu.imsharemusic.view.ChatRoomTopFragment"
             tools:layout="@layout/chat_room_topfragment"/>
