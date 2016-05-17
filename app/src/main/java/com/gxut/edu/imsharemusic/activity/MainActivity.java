@@ -4,24 +4,36 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gxut.edu.imsharemusic.DemoCache;
 import com.gxut.edu.imsharemusic.R;
 import com.gxut.edu.imsharemusic.adapter.MainSectionsPagerAdapter;
 import com.gxut.edu.imsharemusic.helper.ChatRoomMemberCache;
 import com.gxut.edu.imsharemusic.view.ChatRoomListFragment;
 import com.gxut.edu.imsharemusic.view.ChatRoomMessageFragment;
 import com.gxut.edu.imsharemusic.view.ChatRoomTopFragment;
+import com.gxut.edu.imsharemusic.view.OnlinePeopleFragment;
 import com.gxut.edu.imsharemusic.view.UserInfoFragment;
 import com.gxut.edu.imsharemusic.view.ZoomOutPageTransformer;
 import com.netease.nim.uikit.LoginSyncDataStatusObserver;
+import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.activity.TActivity;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
+import com.netease.nim.uikit.common.ui.imageview.HeadImageView;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nimlib.sdk.AbortableFuture;
 import com.netease.nimlib.sdk.NIMClient;
@@ -40,15 +52,27 @@ import com.netease.nimlib.sdk.chatroom.model.EnterChatRoomResultData;
 
 import java.util.ArrayList;
 
-public class MainActivity extends TActivity {
+public class MainActivity extends TActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private MainSectionsPagerAdapter mMainSectionsPagerAdapter;
     private ViewPager mViewPager;
     private ArrayList<Fragment> fragmentss = new ArrayList<>();
     private final static String EXTRA_ROOM_ID = "ROOM_ID";
     private static final String TAG = MainActivity.class.getSimpleName();
+
     private Fragment chatRoomFragment;
     private Fragment chatRoomMessageFragment;
     private Fragment userInfoFragment;
+    private OnlinePeopleFragment onlinFragment;
+
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private View view;
+    private Button button_login;
+    private Button button_register;
+    private TextView userTitle;
+    private HeadImageView userImageView;
+
     /**
      * 聊天室基本信息
      */
@@ -85,7 +109,7 @@ public class MainActivity extends TActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         // Toolbar toolbar = (Toolbar) findViewById(R.id.bar_panel);
         // setSupportActionBar(toolbar);
         initView();
@@ -114,6 +138,14 @@ public class MainActivity extends TActivity {
         // 登录聊天室
         enterRoom();
         context = this;
+//        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void initView() {
@@ -121,9 +153,14 @@ public class MainActivity extends TActivity {
         chatRoomFragment = new ChatRoomListFragment();
         chatRoomMessageFragment = new ChatRoomMessageFragment();
         userInfoFragment = new UserInfoFragment();
+        onlinFragment = new OnlinePeopleFragment();
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         fragmentss.add(chatRoomFragment);
         fragmentss.add(chatRoomMessageFragment);
-        fragmentss.add(userInfoFragment);
+        fragmentss.add(onlinFragment);
     }
 
     @Override
@@ -165,6 +202,19 @@ public class MainActivity extends TActivity {
                 // initChatRoomFragment();
                 initMessageFragment();
                 Toast.makeText(MainActivity.this, "欢迎进入聊天室", Toast.LENGTH_SHORT).show();
+                onlinFragment.onCurrent();
+                navigationView.inflateHeaderView(R.layout.nav_header_fragment);
+                view = navigationView.getHeaderView(0);
+                userTitle = (TextView) view.findViewById(R.id.usertitle);
+                userImageView = (HeadImageView) view.findViewById(R.id.userimageView);
+                userTitle.setText(NimUserInfoCache.getInstance().getUserDisplayName(DemoCache.getAccount()));
+                userImageView.loadBuddyAvatar(DemoCache.getAccount());
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        UserProfileSettingActivity.start(MainActivity.this, DemoCache.getAccount());
+                    }
+                });
             }
 
             @Override
@@ -177,6 +227,12 @@ public class MainActivity extends TActivity {
                     LoginActivity.start(context);
                     finish();
                 }
+                navigationView.inflateHeaderView(R.layout.nav_header_fragment2);
+                view = navigationView.getHeaderView(0);
+                button_register = (Button) view.findViewById(R.id.register);
+                button_login = (Button) view.findViewById(R.id.login);
+                button_login.setOnClickListener(MainActivity.this);
+                button_register.setOnClickListener(MainActivity.this);
                 //finish();
             }
 
@@ -292,5 +348,54 @@ public class MainActivity extends TActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_history) {
+            // Handle the camera action
+            Log.i("1", "yunxing");
+            //HistoryActivity.start(MainActivity_Movie.this);
+
+        } else if (id == R.id.nav_collect) {
+           // CollectActivity.start(MainActivity_Movie.this);
+
+        } else if (id == R.id.nav_attention) {
+           // AttentionActivity.start(MainActivity_Movie.this);
+
+        } else if (id == R.id.nav_about) {
+            AboutActivity.start(MainActivity.this);
+
+        } else if (id == R.id.nav_share) {
+
+
+        } else if (id == R.id.nav_logout) {
+//            navigationView.removeHeaderView(navigationView.getHeaderView(0));
+//            navigationView.inflateHeaderView(R.layout.nav_header_fragment2);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.register:
+                Log.i("1", "yunxing");
+                break;
+            case R.id.login:
+                LoginActivity.start(MainActivity.this);
+                finish();
+//                navigationView.removeHeaderView(navigationView.getHeaderView(0));
+//                navigationView.inflateHeaderView(R.layout.nav_header_fragment);
+                break;
+            default:
+                break;
+        }
     }
 }
